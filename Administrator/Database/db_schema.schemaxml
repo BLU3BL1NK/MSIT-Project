@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemadesigner version="6.5">
+<source>
+<database charset="latin1" collation="latin1_swedish_ci">decent</database>
+</source>
+<canvas zoom="100">
+<tables>
+<table name="tblclient" view="colnames">
+<left>411</left>
+<top>58</top>
+<width>120</width>
+<height>311</height>
+<sql_create_table>CREATE TABLE `tblclient` (
+  `ClientID` varchar(20) NOT NULL,
+  `FName` varchar(50) DEFAULT NULL,
+  `LName` varchar(50) DEFAULT NULL,
+  `BDate` date DEFAULT NULL,
+  `Age` int(11) DEFAULT NULL,
+  `Status` varchar(20) DEFAULT NULL,
+  `Sex` varchar(20) DEFAULT NULL,
+  `EMail` varchar(100) DEFAULT NULL,
+  `Address` varchar(200) DEFAULT NULL,
+  `Mobile` varchar(20) DEFAULT NULL,
+  `Username` varchar(50) DEFAULT NULL,
+  `Password` varchar(50) DEFAULT NULL,
+  `No` bigint(20) NOT NULL AUTO_INCREMENT,
+  `Stat` int(11) DEFAULT NULL,
+  PRIMARY KEY (`ClientID`),
+  UNIQUE KEY `No` (`No`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1</sql_create_table>
+</table>
+<table name="tblnews" view="colnames">
+<left>225</left>
+<top>74</top>
+<width>109</width>
+<height>129</height>
+<sql_create_table>CREATE TABLE `tblnews` (
+  `No` bigint(20) NOT NULL AUTO_INCREMENT,
+  `News` varchar(50000) DEFAULT NULL,
+  `Date` date DEFAULT NULL,
+  PRIMARY KEY (`No`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1</sql_create_table>
+</table>
+<table name="tblreport" view="colnames">
+<left>231</left>
+<top>262</top>
+<width>103</width>
+<height>163</height>
+<sql_create_table>CREATE TABLE `tblreport` (
+  `No` bigint(20) NOT NULL AUTO_INCREMENT,
+  `Date` date DEFAULT NULL,
+  `Service` varchar(100) DEFAULT NULL,
+  `Amount` double DEFAULT NULL,
+  `Cashier` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`No`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1</sql_create_table>
+</table>
+<table name="tblreservation" view="colnames">
+<left>617</left>
+<top>6</top>
+<width>138</width>
+<height>214</height>
+<sql_create_table>CREATE TABLE `tblreservation` (
+  `ReservationID` varchar(20) NOT NULL,
+  `ClientID` varchar(20) DEFAULT NULL,
+  `ServiceID` varchar(20) DEFAULT NULL,
+  `Date` date DEFAULT NULL,
+  `FTime` time DEFAULT NULL,
+  `TTime` time DEFAULT NULL,
+  `Type` varchar(50) DEFAULT NULL,
+  `Status` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`ReservationID`),
+  KEY `FK_tblreservation` (`ClientID`),
+  CONSTRAINT `FK_tblreservation` FOREIGN KEY (`ClientID`) REFERENCES `tblclient` (`ClientID`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1</sql_create_table>
+</table>
+<table name="tblservices" view="colnames">
+<left>595</left>
+<top>260</top>
+<width>133</width>
+<height>197</height>
+<sql_create_table>CREATE TABLE `tblservices` (
+  `No` bigint(20) NOT NULL AUTO_INCREMENT,
+  `Type` varchar(100) DEFAULT NULL,
+  `Description` varchar(10000) DEFAULT NULL,
+  `Price` double DEFAULT NULL,
+  `Images` varchar(100) DEFAULT NULL,
+  `Duration` varchar(10) DEFAULT NULL,
+  `Category` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`No`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1</sql_create_table>
+</table>
+<table name="tbltherapist" view="colnames">
+<left>810</left>
+<top>215</top>
+<width>115</width>
+<height>129</height>
+<sql_create_table>CREATE TABLE `tbltherapist` (
+  `No` bigint(20) NOT NULL AUTO_INCREMENT,
+  `Pix` varchar(100) DEFAULT NULL,
+  `Name` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`No`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1</sql_create_table>
+</table>
+<table name="tbluser" view="colnames">
+<left>55</left>
+<top>48</top>
+<width>121</width>
+<height>214</height>
+<sql_create_table>CREATE TABLE `tbluser` (
+  `No` bigint(20) NOT NULL AUTO_INCREMENT,
+  `Username` varchar(20) DEFAULT NULL,
+  `Password` varchar(20) DEFAULT NULL,
+  `Name` varchar(100) DEFAULT NULL,
+  `EMail` varchar(100) DEFAULT NULL,
+  `CNo` varchar(20) DEFAULT NULL,
+  `Address` varchar(200) DEFAULT NULL,
+  `Type` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`No`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1</sql_create_table>
+</table>
+</tables>
+</canvas>
+</schemadesigner>
